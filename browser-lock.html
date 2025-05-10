@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Browser Lock</title>
+	<link rel="stylesheet" href="assets/css/login.css">
+	<link rel="stylesheet" href="assets/css/noty.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Poppins', sans-serif;
+			background: linear-gradient(135deg, #0a1525 0%, #153363 70%, #1a4586 100%);
+			overflow-x: hidden;
+			min-height: 100vh;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.container {
+			width: 100%;
+			max-width: 900px;
+			padding: 20px;
+		}
+		
+		.split-layout {
+			display: flex;
+			background: rgba(22, 36, 64, 0.75);
+			backdrop-filter: blur(10px);
+			border-radius: 20px;
+			box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			overflow: hidden;
+		}
+		
+		.left-side {
+			flex: 0 0 40%;
+			padding: 40px 30px;
+			background: linear-gradient(145deg, #1a2c48, #1e365c);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		.right-side {
+			flex: 1;
+			padding: 40px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+		
+		.logo-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 30px;
+			position: relative;
+			z-index: 2;
+		}
+		
+		.logo {
+			width: 90px;
+			height: 90px;
+			margin-bottom: 20px;
+		}
+		
+		.app-name {
+			font-size: 28px;
+			font-weight: 700;
+			margin: 0;
+			letter-spacing: 1.5px;
+			background: linear-gradient(to right, #64b3f4, #c2e59c);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-align: center;
+		}
+		
+		.app-tag {
+			font-size: 16px;
+			color: #a0b0c5;
+			margin-top: 8px;
+			text-align: center;
+		}
+		
+		.left-side-features {
+			margin-top: 30px;
+			width: 100%;
+		}
+		
+		.feature-item {
+			display: flex;
+			align-items: center;
+			margin-bottom: 15px;
+			padding: 10px;
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 10px;
+		}
+		
+		.feature-icon {
+			width: 24px;
+			height: 24px;
+			fill: #64b3f4;
+			margin-right: 15px;
+			flex-shrink: 0;
+		}
+		
+		.feature-text {
+			color: #e0e8f5;
+			font-size: 14px;
+		}
+		
+		.shape {
+			position: absolute;
+			opacity: 0.2;
+			z-index: 1;
+		}
+		
+		.shape-1 {
+			width: 150px;
+			height: 150px;
+			background: linear-gradient(45deg, #64b3f4, #c2e59c);
+			border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+			top: -50px;
+			left: -50px;
+		}
+		
+		.shape-2 {
+			width: 100px;
+			height: 100px;
+			background: linear-gradient(45deg, #3a7bd5, #00d2ff);
+			border-radius: 64% 36% 27% 73% / 55% 58% 42% 45%;
+			bottom: -30px;
+			right: -30px;
+		}
+		
+		h2 {
+			margin-top: 0;
+			margin-bottom: 30px;
+			text-align: left;
+			font-size: 28px;
+			font-weight: 600;
+			background: linear-gradient(to right, #3a7bd5, #00d2ff);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+		
+		.form__field {
+			margin-bottom: 25px;
+		}
+		
+		.form__field:last-of-type {
+			margin-bottom: 0;
+			margin-top: 30px;
+		}
+		
+		.form__field label {
+			display: block;
+			margin-bottom: 12px;
+			color: #c8d4e9;
+			font-size: 15px;
+			font-weight: 500;
+		}
+		
+		.input-wrapper {
+			position: relative;
+			background: linear-gradient(145deg, #1e2e51, #243a65);
+			border-radius: 12px;
+			padding: 2px;
+		}
+		
+		.input-with-icon {
+			position: relative;
+			display: flex;
+			align-items: center;
+			background: linear-gradient(145deg, #1e2e51, #243a65);
+			border-radius: 10px;
+			overflow: hidden;
+		}
+		
+		.input-icon-container {
+			position: absolute;
+			left: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 20px;
+			height: 20px;
+			z-index: 2;
+		}
+		
+		.input-icon {
+			width: 20px;
+			height: 20px;
+			fill: #7ea0d4;
+		}
+		
+		.form__field input[type="password"] {
+			width: 100%;
+			height: 55px;
+			padding: 0 20px 0 45px !important;
+			background: linear-gradient(145deg, #1f3050, #253c66) !important;
+			border-radius: 10px !important;
+			font-size: 16px;
+			color: #e0e8f5;
+			transition: all 0.3s ease;
+			box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
+			border: none !important;
+		}
+		
+		.form__field input[type="password"]:focus {
+			background: linear-gradient(145deg, #253c66, #2a447a) !important;
+			box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(58, 123, 213, 0.3);
+			outline: none;
+		}
+		
+		.form__field input[type="password"]::placeholder {
+			color: #7ea0d4;
+			opacity: 0.7;
+		}
+		
+		.unlock-description {
+			color: #a0b0c5;
+			font-size: 14px;
+			margin: 20px 0;
+			line-height: 1.6;
+		}
+		
+		input[type="submit"] {
+			width: 100%;
+			padding: 17px !important;
+			border-radius: 12px !important;
+			font-size: 17px;
+			font-weight: 600;
+			text-transform: capitalize !important;
+			letter-spacing: 0.5px;
+			background: linear-gradient(135deg, #3a7bd5 0%, #00d2ff 100%) !important;
+			cursor: pointer;
+			box-shadow: 0 8px 20px rgba(0, 98, 255, 0.3);
+			border: none !important;
+			color: #ffffff !important;
+		}
+		
+		input[type="submit"]:hover {
+			background: linear-gradient(135deg, #3a8bd5 0%, #00e1ff 100%) !important;
+		}
+		
+		.footer-container {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 30px;
+		}
+		
+		.forgot-password-container {
+			margin-bottom: 15px;
+			text-align: center;
+		}
+		
+		.forgot-link {
+			display: inline-block;
+			color: #7ea0d4;
+			font-size: 15px;
+			text-decoration: none;
+			padding: 8px 15px;
+			border-radius: 20px;
+			background: rgba(22, 36, 64, 0.4);
+		}
+		
+		.forgot-link:hover {
+			color: #ffffff;
+			background: rgba(58, 123, 213, 0.4);
+		}
+		
+		.developer-credit {
+			color: #7ea0d4;
+			font-size: 13px;
+			text-align: center;
+			padding: 10px 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.05);
+			width: 100%;
+			max-width: 280px;
+			margin-top: 10px;
+		}
+		
+		.developer-credit a {
+			color: #00d2ff;
+			font-weight: 500;
+		}
+		
+		.developer-credit a:hover {
+			color: #3a7bd5;
+			text-decoration: none;
+		}
+		
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.split-layout {
+				flex-direction: column;
+			}
+			
+			.left-side, .right-side {
+				width: 100%;
+				padding: 30px 20px;
+			}
+			
+			.container {
+				padding: 15px;
+			}
+			
+			h2 {
+				text-align: center;
+				margin-bottom: 20px;
+				font-size: 24px;
+			}
+			
+			.logo {
+				width: 70px;
+				height: 70px;
+			}
+			
+			.left-side-features {
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="split-layout">
+			<div class="left-side">
+				<div class="shape shape-1"></div>
+				<div class="shape shape-2"></div>
+				
+				<div class="logo-container">
+					<img src="assets/img/128.png" alt="WebLock Logo" class="logo">
+					<h1 class="app-name">WEB LOCK</h1>
+					<p class="app-tag">Your app lock, but for the web</p>
+				</div>
+				
+				<div class="left-side-features">
+					<div class="feature-item">
+						<svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+						</svg>
+						<span class="feature-text">Enhanced security for all your browsing</span>
+					</div>
+					<div class="feature-item">
+						<svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/>
+						</svg>
+						<span class="feature-text">Automatically restore tabs after unlocking</span>
+					</div>
+					<div class="feature-item">
+						<svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+						</svg>
+						<span class="feature-text">Remember trusted devices for easier access</span>
+					</div>
+				</div>
+			</div>
+			
+			<div class="right-side">
+				<h2>Browser Unlock</h2>
+				
+				<form method="POST" class="form login">
+					<div class="form__field">
+						<label for="login__password">Enter your password to continue</label>
+						<div class="input-wrapper">
+							<div class="input-with-icon">
+								<div class="input-icon-container">
+									<svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+										<path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+									</svg>
+								</div>
+								<input id="login__password" type="password" name="password" class="form__input" placeholder="Enter your password" required autofocus>
+							</div>
+						</div>
+					</div>
+
+					<p class="unlock-description">Your browser will remain locked until you enter the correct password. All your tabs will be restored after unlocking.</p>
+
+					<div class="form__field">
+						<input type="submit" id="login__button" value="Unlock Browser">
+					</div>
+					
+					<div class="footer-container">
+						<div class="forgot-password-container">
+							<a href="forgot-browser.html" class="forgot-link">Forgot Password?</a>
+						</div>
+						
+						<div class="developer-credit">
+							Developed by <a href="https://rijoan.com" target="_blank">Md Rijoan Maruf</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<svg style="display: none" xmlns="http://www.w3.org/2000/svg" class="icons">
+		<symbol id="icon-lock" viewBox="0 0 1792 1792">
+			<path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z"></path>
+		</symbol>
+	</svg>
+	
+	<script src="assets/js/sha.js"></script>
+	<script src="assets/js/noty.js"></script>
+	<script src="assets/js/browser-lock.js"></script>
+	<script>
+		// Keep the remember setting enabled in the background
+		document.addEventListener('DOMContentLoaded', function() {
+			// Create a hidden remember checkbox to maintain functionality
+			var hiddenRemember = document.createElement('input');
+			hiddenRemember.type = 'hidden';
+			hiddenRemember.id = 'remember';
+			hiddenRemember.className = 'remember';
+			hiddenRemember.checked = true;
+			hiddenRemember.value = 'true';
+			
+			// Add the hidden checkbox to the form
+			var form = document.querySelector('form');
+			if (form) {
+				form.appendChild(hiddenRemember);
+			}
+			
+			// Focus on the password input field automatically
+			var passwordInput = document.getElementById('login__password');
+			if (passwordInput) {
+				passwordInput.focus();
+			}
+		});
+	</script>
+</body>
+</html>

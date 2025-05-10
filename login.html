@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="stylesheet" href="assets/css/login.css">
+  <link rel="stylesheet" href="assets/css/noty.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #0a1525 0%, #153363 100%);
+      overflow-x: hidden;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .grid {
+      width: 100%;
+      max-width: 380px;
+      padding: 30px 20px;
+    }
+    
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 10px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .app-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: #e0e8f5;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    
+    .app-tag {
+      font-size: 14px;
+      color: #7ea0d4;
+      margin-top: 5px;
+    }
+    
+    .form {
+      background: rgba(22, 36, 64, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    h2 {
+      color: #e0e8f5;
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .form__field {
+      margin-bottom: 20px;
+    }
+    
+    .form__field:last-of-type {
+      margin-bottom: 0;
+    }
+    
+    .form__field label {
+      background-color: #1c2c4a !important;
+      padding: 15px !important;
+      border-radius: 8px 0 0 8px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .form__field input[type="password"] {
+      background-color: #263655 !important;
+      padding: 15px !important;
+      border-radius: 0 8px 8px 0 !important;
+      font-size: 16px;
+      color: #e0e8f5;
+      transition: all 0.3s ease;
+    }
+    
+    .form__field input[type="password"]:focus {
+      background-color: #304060 !important;
+      box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3);
+    }
+    
+    .icon {
+      width: 18px;
+      height: 18px;
+      fill: #7ea0d4;
+    }
+    
+    .security-options {
+      margin: 20px 0;
+    }
+    
+    .option-item {
+      display: flex;
+      align-items: center;
+    }
+    
+    .option-item label {
+      color: #a0b0c5;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    
+    .option-item input[type="checkbox"] {
+      margin-right: 10px;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #1c2c4a;
+      border-radius: 4px;
+      border: 1px solid #304060;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .option-item input[type="checkbox"]:checked::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: solid #2ecc71;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    
+    input[type="submit"] {
+      width: 100%;
+      padding: 15px !important;
+      border-radius: 8px !important;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: capitalize !important;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #2c5aaa 0%, #3670d4 100%) !important;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(46, 114, 229, 0.2);
+    }
+    
+    input[type="submit"]:hover {
+      background: linear-gradient(135deg, #3670d4 0%, #4281e8 100%) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46, 114, 229, 0.3);
+    }
+    
+    .text--center {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .text--center a {
+      color: #7ea0d4;
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .text--center a:hover {
+      color: #3670d4;
+      text-decoration: underline;
+    }
+    
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 0;
+      text-align: center;
+      background: rgba(10, 21, 37, 0.7);
+      backdrop-filter: blur(5px);
+    }
+    
+    .developer-credit {
+      color: #7ea0d4;
+      font-size: 13px;
+    }
+    
+    .developer-credit a {
+      color: #3670d4;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="logo-container">
+      <img src="assets/img/128.png" alt="WebLock Logo" class="logo">
+      <h1 class="app-name">WEB LOCK</h1>
+      <p class="app-tag">Your app lock, but for the web</p>
+    </div>
+
+    <form method="POST" class="form login">
+      <h2>Enter Password</h2>
+      <div class="form__field">
+        <label for="login__password"><svg class="icon">
+            <use xlink:href="#icon-lock"></use>
+          </svg><span class="hidden">Password</span></label>
+        <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
+      </div>
+
+      <div class="security-options">
+        <div class="option-item">
+          <label>
+            <input type="checkbox" id="remember" class="remember" checked> Don't ask again until I close the browser
+          </label>
+        </div>
+      </div>
+
+      <div class="form__field">
+        <input type="submit" id="login__button" value="Unlock">
+      </div>
+    </form>
+
+    <p class="text--center"><a href="forgot-browser.html">Forgot Password?</a></p>
+  </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" class="icons">
+    <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
+      <path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z"></path>
+    </symbol>
+    <symbol id="icon-lock" viewBox="0 0 1792 1792">
+      <path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z"></path>
+    </symbol>
+    <symbol id="icon-user" viewBox="0 0 1792 1792">
+      <path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z"></path>
+    </symbol>
+  </svg>
+  
+  <div class="footer">
+    <div class="info-links">
+      <span class="developer-credit">Developed by <a href="https://rijoan.com" target="_blank">Md Rijoan Maruf</a></span>
+    </div>
+  </div>
+  
+  <script src="assets/js/sha.js"></script>
+  <script src="assets/js/noty.js"></script>
+  <script src="assets/js/browser-lock.js"></script>
+  <script>
+    // Ensure the checkbox is checked by default
+    document.addEventListener('DOMContentLoaded', function() {
+        var rememberCheckbox = document.querySelector('#remember');
+        
+        if (rememberCheckbox) {
+            rememberCheckbox.checked = true;
+        }
+    });
+  </script>
+</body>
+</html>

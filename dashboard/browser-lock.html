@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Browser Lock</title>
+ 	<link rel="stylesheet" href="../assets/css/noty.css">
+	<link rel="stylesheet" href="../assets/css/nav.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.css">
+	<link rel="stylesheet" href="../assets/css/reset.css">
+	<link rel="stylesheet" href="../assets/css/icons.css">
+	<link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .browser-lock-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .todo {
+            background: rgba(22, 36, 64, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px !important;
+        }
+        
+        .feature-info {
+            background-color: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid #2ecc71;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.1);
+        }
+        
+        .feature-tips {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1);
+        }
+        
+        .feature-tips ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .feature-tips li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        .form-control {
+            background-color: #1c2c4a !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 8px !important;
+            height: 50px !important;
+            font-size: 16px !important;
+            color: #e0e8f5 !important;
+            transition: all 0.3s ease;
+            box-shadow: none !important;
+        }
+        
+        .form-control:focus {
+            border-color: #3498db !important;
+            background-color: #263655 !important;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2) !important;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 30px 0 15px;
+            color: #e0e8f5;
+        }
+        
+        .remember-device-option {
+            margin-top: 40px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .remember-device-option .text-muted {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #7ea0d4 !important;
+        }
+        
+        .btn {
+            padding: 12px 25px !important;
+            border-radius: 8px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease !important;
+            border: none !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-dark {
+            background: linear-gradient(135deg, #2c5aaa 0%, #3670d4 100%) !important;
+        }
+        
+        .btn-dark:hover {
+            background: linear-gradient(135deg, #3670d4 0%, #4281e8 100%) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 114, 229, 0.3) !important;
+        }
+        
+        .lock-now-btn {
+            margin-top: 10px;
+            background: linear-gradient(135deg, #a02c2c 0%, #c53030 100%) !important;
+        }
+        
+        .lock-now-btn:hover {
+            background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%) !important;
+            box-shadow: 0 6px 20px rgba(229, 62, 62, 0.3) !important;
+        }
+        
+        .browser-lock-summery {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #a0b0c5;
+        }
+        
+        .browser-lock-summery a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .browser-lock-summery a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .text-light {
+            color: #e0e8f5 !important;
+            font-weight: 500;
+            margin-bottom: 12px !important;
+        }
+    </style>
+</head>
+<body>
+  <main role="main">
+    <section class="todo mt-5 mx-auto">
+        <p class="browser-lock-title">Browser Lock</p>
+        
+        <div class="feature-info">
+            <p><strong>Browser Lock</strong> protects your entire browser with a password. When enabled, you'll be prompted to enter your password every time you launch your browser.</p>
+        </div>
+        
+        <h1 class="section-title">Enable Browser Lock</h1>
+        <div class="form-group">
+          <select class="form-control m-auto text-light browser_lock_input">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+        
+        <h1 class="section-title">Restore Previous Tabs After Unlocking</h1>
+        <div class="form-group">
+          <select class="form-control m-auto text-light browser_tab_restore_input">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+        
+        <div class="remember-device-option">
+            <h1 class="section-title">Remember This Device</h1>
+            <div class="form-group">
+              <select class="form-control m-auto text-light remember_device_input">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+            <p class="text-muted mt-2">If enabled, you won't be asked for password on this device.</p>
+        </div>
+        
+        <div class="button-group">
+            <button class="browser_lock_save_btn btn btn-dark">
+              Save Settings
+            </button>
+            
+            <button class="lock_now_btn btn lock-now-btn">
+              Lock Browser Now
+            </button>
+        </div>
+        
+        <div class="feature-tips mt-4">
+            <p><strong>Tips:</strong></p>
+            <ul>
+                <li>You can quickly lock your browser from the extension popup.</li>
+                <li>When tab restoration is enabled, all your tabs will be restored when you unlock the browser.</li>
+                <li>The "Remember This Device" option will skip the password prompt on this specific device.</li>
+            </ul>
+        </div>
+        
+        <p class="browser-lock-summery mt-4">
+          If you find any issues, please report them using the <a href="feedback.html">feedback</a> form or visit 
+          <a href="https://rijoan.com/contact" target="_blank">rijoan.com/contact</a>.
+        </p>
+    </section>
+    <nav>
+		<div class="button">
+		  <img src="../assets/img/up-arrow.svg">
+		</div>
+		<div class="nav-links">
+		</div>
+	</nav>
+  </main>
+  <script src="../assets/js/noty.js"></script>
+  <script src="../assets/js/dashboard/browser-lock.js"></script>
+  <script src="../assets/js/nav.js"></script>
+</body>
+</html>

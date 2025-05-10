@@ -1,0 +1,47 @@
+/* Force checkbox to appear checked visually */
+.remember {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #7ea0d4;
+    border-radius: 3px;
+    background-color: #162440;
+    vertical-align: middle;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Always show checkmark regardless of checked state */
+.remember::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid #7ea0d4;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: block !important;
+}
+
+/* Hide default checkbox visually but keep it accessible */
+input[type="checkbox"].remember {
+    opacity: 1;
+}
+
+/* Additional styles to ensure the label is properly styled */
+.remember-label {
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure the label text is properly styled */
+.remember-label:after {
+    content: "";
+    display: inline-block;
+    clear: both;
+} 

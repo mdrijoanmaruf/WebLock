@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Lock</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #0a1525;
+        color: #e0e8f5;
+        margin: 0;
+        padding: 0;
+      }
+      
+      #wrapper {
+        width: 280px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background: linear-gradient(135deg, #11203a 0%, #1c2c4a 100%);
+      }
+      
+      .extension-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      
+      .extension-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 12px;
+      }
+      
+      .extension-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #e0e8f5;
+        margin: 0;
+      }
+      
+      .action-button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(135deg, #2c5aaa 0%, #3670d4 100%);
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(46, 114, 229, 0.2);
+      }
+      
+      .action-button:hover {
+        background: linear-gradient(135deg, #3670d4 0%, #4281e8 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(46, 114, 229, 0.3);
+        text-decoration: none;
+      }
+      
+      .action-button.lock-now {
+        background: linear-gradient(135deg, #a02c2c 0%, #c53030 100%);
+        margin-top: 5px;
+      }
+      
+      .action-button.lock-now:hover {
+        background: linear-gradient(135deg, #c53030 0%, #e53e3e 100%);
+        box-shadow: 0 6px 20px rgba(229, 62, 62, 0.3);
+      }
+      
+      .action-button:active {
+        transform: translateY(1px);
+      }
+      
+      .developer-credit {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #7ea0d4;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+      }
+      
+      .developer-credit a {
+        color: #3670d4;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      
+      .developer-credit a:hover {
+        color: #4281e8;
+        text-decoration: underline;
+      }
+      
+      .section-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #e0e8f5;
+      }
+      
+      .browser-lock-status {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        background: rgba(28, 44, 74, 0.5);
+        padding: 12px;
+        border-radius: 8px;
+      }
+      
+      .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 12px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      
+      .status-indicator.enabled {
+        background-color: #2ecc71;
+        box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+      }
+      
+      .status-indicator.enabled:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: rgba(46, 204, 113, 0.2);
+        top: -4px;
+        left: -4px;
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          opacity: 0.8;
+        }
+        70% {
+          transform: scale(1.1);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+      }
+      
+      .status-indicator.disabled {
+        background-color: #e74c3c;
+      }
+      
+      .status-text {
+        font-size: 14px;
+        color: #e0e8f5;
+        font-weight: 500;
+      }
+      
+      .settings-section {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="extension-header">
+        <img src="assets/img/48.png" class="extension-icon" alt="Web Lock">
+        <h1 class="extension-title">Web Lock</h1>
+      </div>
+      
+      <div class="browser-lock-status">
+        <div class="status-indicator" id="lockStatus"></div>
+        <div class="status-text" id="lockStatusText">Checking...</div>
+      </div>
+      
+      <button id="lockNowBtn" class="action-button lock-now">Lock Browser Now</button>
+      
+      <div class="settings-section">
+        <a href="login.html" target="_blank" class="action-button">Manage Sites</a>
+        <a href="dashboard/browser-lock.html" target="_blank" class="action-button">Browser Lock Settings</a>
+      </div>
+      
+      <div class="developer-credit">Developed by <a href="https://rijoan.com" target="_blank">Md Rijoan Maruf</a></div>
+    </div>
+    
+    <script src="assets/js/popup.js"></script>
+  </body>
+</html>

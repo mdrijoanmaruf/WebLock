@@ -1,0 +1,66 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "author": "Md Rijoan Maruf (rijoan.com)",
+    "content_scripts": [ 
+        {
+            "js": [
+                "assets/js/checkbox-fix.js",
+                "assets/js/sha.js",
+                "assets/js/noty.js",
+                "assets/js/remember-fix.js",
+                "assets/js/banner-remover.js",
+                "assets/js/footer-link.js",
+                "assets/js/content.js"
+            ],
+            "css": [
+                "assets/css/footer-fix.css",
+                "assets/css/checkbox-checked.css"
+            ],
+            "matches": [ "*://*/*" ],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+          "resources": [
+              "assets/css/login.css",
+              "assets/css/noty.css",
+              "assets/css/footer-fix.css",
+              "assets/css/checkbox-checked.css",
+              "assets/js/locker.js",
+              "assets/js/sha.js",
+              "assets/js/noty.js",
+              "assets/js/checkbox-fix.js",
+              "assets/js/remember-fix.js",
+              "assets/js/banner-remover.js",
+              "assets/js/footer-link.js",
+              "assets/img/up-arrow.svg",
+              "forgot.html",
+              "login.html",
+              "blocked.html"
+            ],
+          "matches": ["<all_urls>"]
+        }
+    ],
+    "background": {
+        "service_worker": "assets/js/background.js"
+    },
+    "action": {
+        "default_icon": "assets/img/48.png",
+        "default_popup": "popup.html",
+        "default_title": "Web Lock"
+    },
+    "description": "Your app lock, but for the web. Protect any website with a password!",
+    "homepage_url": "https://rijoan.com",
+    "icons": {
+        "128": "assets/img/128.png",
+        "48": "assets/img/48.png"
+    },
+    "manifest_version": 3,
+    "name": "Web Lock | App lock for websites",
+    "permissions": ["storage","unlimitedStorage"],
+    "optional_permissions": ["tabs"],
+    "short_name": "weblock",
+    "version": "1.34"
+}
