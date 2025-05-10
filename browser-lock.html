@@ -154,28 +154,36 @@
 			background-clip: text;
 		}
 		
-		.form__field {
+		.password-field-container {
 			margin-bottom: 25px;
 		}
 		
-		.form__field:last-of-type {
-			margin-bottom: 0;
-			margin-top: 30px;
+		.field-label {
+			display: block;
+			color: #c8d4e9;
+			font-size: 16px;
+			font-weight: 500;
+			margin-bottom: 15px;
+			position: relative;
+			padding-left: 30px;
 		}
 		
-		.form__field label {
-			display: block;
-			margin-bottom: 12px;
-			color: #c8d4e9;
-			font-size: 15px;
-			font-weight: 500;
+		.label-icon {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 20px;
+			height: 20px;
+			fill: #64b3f4;
 		}
 		
 		.input-wrapper {
 			position: relative;
 			background: linear-gradient(145deg, #1e2e51, #243a65);
 			border-radius: 12px;
-			padding: 2px;
+			padding: 3px;
+			margin-bottom: 10px;
 		}
 		
 		.input-with-icon {
@@ -187,43 +195,25 @@
 			overflow: hidden;
 		}
 		
-		.input-icon-container {
-			position: absolute;
-			left: 15px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			width: 20px;
-			height: 20px;
-			z-index: 2;
-		}
-		
-		.input-icon {
-			width: 20px;
-			height: 20px;
-			fill: #7ea0d4;
-		}
-		
-		.form__field input[type="password"] {
+		.form__input {
 			width: 100%;
-			height: 55px;
-			padding: 0 20px 0 45px !important;
+			height: 60px;
+			padding: 0 25px !important;
 			background: linear-gradient(145deg, #1f3050, #253c66) !important;
 			border-radius: 10px !important;
-			font-size: 16px;
+			font-size: 17px;
 			color: #e0e8f5;
-			transition: all 0.3s ease;
 			box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
 			border: none !important;
 		}
 		
-		.form__field input[type="password"]:focus {
+		.form__input:focus {
 			background: linear-gradient(145deg, #253c66, #2a447a) !important;
 			box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(58, 123, 213, 0.3);
 			outline: none;
 		}
 		
-		.form__field input[type="password"]::placeholder {
+		.form__input::placeholder {
 			color: #7ea0d4;
 			opacity: 0.7;
 		}
@@ -235,9 +225,10 @@
 			line-height: 1.6;
 		}
 		
-		input[type="submit"] {
+		.submit-btn {
 			width: 100%;
-			padding: 17px !important;
+			height: 60px;
+			padding: 0 20px !important;
 			border-radius: 12px !important;
 			font-size: 17px;
 			font-weight: 600;
@@ -248,9 +239,10 @@
 			box-shadow: 0 8px 20px rgba(0, 98, 255, 0.3);
 			border: none !important;
 			color: #ffffff !important;
+			margin-top: 30px;
 		}
 		
-		input[type="submit"]:hover {
+		.submit-btn:hover {
 			background: linear-gradient(135deg, #3a8bd5 0%, #00e1ff 100%) !important;
 		}
 		
@@ -374,15 +366,16 @@
 				<h2>Browser Unlock</h2>
 				
 				<form method="POST" class="form login">
-					<div class="form__field">
-						<label for="login__password">Enter your password to continue</label>
+					<div class="password-field-container">
+						<label for="login__password" class="field-label">
+							<svg class="label-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+								<path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+							</svg>
+							Enter your password to continue
+						</label>
+						
 						<div class="input-wrapper">
 							<div class="input-with-icon">
-								<div class="input-icon-container">
-									<svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-									</svg>
-								</div>
 								<input id="login__password" type="password" name="password" class="form__input" placeholder="Enter your password" required autofocus>
 							</div>
 						</div>
@@ -390,9 +383,7 @@
 
 					<p class="unlock-description">Your browser will remain locked until you enter the correct password. All your tabs will be restored after unlocking.</p>
 
-					<div class="form__field">
-						<input type="submit" id="login__button" value="Unlock Browser">
-					</div>
+					<input type="submit" id="login__button" class="submit-btn" value="Unlock Browser">
 					
 					<div class="footer-container">
 						<div class="forgot-password-container">
