@@ -5,19 +5,29 @@
     "content_scripts": [ 
         {
             "js": [
-                "assets/js/checkbox-fix.js",
                 "assets/js/sha.js",
                 "assets/js/noty.js",
+                "assets/js/content.js"
+            ],
+            "matches": [ "*://*/*" ],
+            "run_at": "document_start"
+        },
+        {
+            "js": [
+                "assets/js/checkbox-fix.js",
                 "assets/js/remember-fix.js",
                 "assets/js/banner-remover.js",
-                "assets/js/footer-link.js",
-                "assets/js/content.js"
+                "assets/js/footer-link.js"
             ],
             "css": [
                 "assets/css/footer-fix.css",
                 "assets/css/checkbox-checked.css"
             ],
-            "matches": [ "*://*/*" ],
+            "matches": [
+                "*://*.weblock.site/*",
+                "*://weblock.site/*",
+                "*://localhost/*"
+            ],
             "run_at": "document_start"
         }
     ],

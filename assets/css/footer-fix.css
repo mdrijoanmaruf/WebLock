@@ -1,9 +1,16 @@
-/* Footer fix to only show developer credit */
-.footer * {
+/* Footer fix to only show developer credit - only on WebLock pages */
+/* Target only WebLock specific elements */
+.weblock-footer *,
+.login + .footer *,
+.form + .footer *,
+[data-weblock="true"] + .footer * {
     display: none !important;
 }
 
-.footer {
+.weblock-footer,
+.login + .footer,
+.form + .footer,
+[data-weblock="true"] + .footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -13,19 +20,28 @@
     background: transparent;
 }
 
-.footer:before {
+.weblock-footer:before,
+.login + .footer:before,
+.form + .footer:before,
+[data-weblock="true"] + .footer:before {
     content: "Developed by Md Rijoan Maruf";
     color: #7ea0d4;
     font-size: 0.9rem;
     display: inline-block !important;
 }
 
-.footer:hover:before {
+.weblock-footer:hover:before,
+.login + .footer:hover:before,
+.form + .footer:hover:before,
+[data-weblock="true"] + .footer:hover:before {
     text-decoration: underline;
     cursor: pointer;
 }
 
-.footer:after {
+.weblock-footer:after,
+.login + .footer:after,
+.form + .footer:after,
+[data-weblock="true"] + .footer:after {
     content: "";
     position: absolute;
     top: 0;
@@ -33,9 +49,5 @@
     right: 0;
     bottom: 0;
     z-index: 1;
-}
-
-/* Make the entire footer clickable to Rijoan's site */
-.footer:after {
     cursor: pointer;
 } 

@@ -2,7 +2,7 @@ var cssURL=chrome.runtime.getURL("assets/css/login.css"),notyCSSURL=chrome.runti
 Please copy the message below and visit https://rijoan.com/contact to report this error so I can fix it for you and everyone else using the extension.
 Error Message: `+e.message)},500)}sessionStorage.removeItem("lastPassword"),sessionStorage.lastUnlocked&&sessionStorage.removeItem("lastUnlocked")}n||(document.write(`
                     <!DOCTYPE html>
-                    <html lang="en">
+                    <html lang="en" data-weblock="true">
                     <head>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,9 @@ Error Message: `+e.message)},500)}sessionStorage.removeItem("lastPassword"),sess
                             }
                         </style>
                     </head>
-                    <body class="align">
-                        <div class="grid">
-                            <form class="form login">
+                    <body class="align weblock-body">
+                        <div class="grid weblock-grid">
+                            <form class="form login weblock-form" data-weblock="true">
                                 <h2>Enter Password to Unlock</h2>
                                 <div class="form__field">
                                     <label for="login__password">
@@ -37,8 +37,8 @@ Error Message: `+e.message)},500)}sessionStorage.removeItem("lastPassword"),sess
                                     <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
                                 </div>
                                 <div class="form__field">
-                                    <label class="remember-label">
-                                        <input type="checkbox" class="remember" checked> Don't ask again until I close the browser
+                                    <label class="remember-label weblock-remember-label">
+                                        <input type="checkbox" class="remember weblock-remember" data-weblock="true" checked> Don't ask again until I close the browser
                                     </label>
                                     <script>
                                         // Immediate script to force checkbox checked
@@ -63,7 +63,7 @@ Error Message: `+e.message)},500)}sessionStorage.removeItem("lastPassword"),sess
                                 <path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z" />
                             </symbol>
                         </svg>
-                        <div class="footer">
+                        <div class="footer weblock-footer" data-weblock="true">
                             <div class="info-links">
                                 <span class="developer-credit">Developed by <a href="https://rijoan.com" target="_blank">Md Rijoan Maruf</a></span>
                             </div>

@@ -1,5 +1,9 @@
-/* Force checkbox to appear checked visually */
-.remember {
+/* Force checkbox to appear checked visually - only for WebLock checkboxes */
+.weblock-form .remember,
+.login .remember,
+.form .remember,
+[data-weblock="true"] .remember,
+.weblock-remember {
     position: relative;
     appearance: none;
     -webkit-appearance: none;
@@ -14,8 +18,12 @@
     cursor: pointer;
 }
 
-/* Always show checkmark regardless of checked state */
-.remember::after {
+/* Always show checkmark regardless of checked state - only for WebLock checkboxes */
+.weblock-form .remember::after,
+.login .remember::after,
+.form .remember::after,
+[data-weblock="true"] .remember::after,
+.weblock-remember::after {
     content: '';
     position: absolute;
     left: 4px;
@@ -28,19 +36,31 @@
     display: block !important;
 }
 
-/* Hide default checkbox visually but keep it accessible */
-input[type="checkbox"].remember {
+/* Hide default checkbox visually but keep it accessible - only for WebLock checkboxes */
+.weblock-form input[type="checkbox"].remember,
+.login input[type="checkbox"].remember,
+.form input[type="checkbox"].remember,
+[data-weblock="true"] input[type="checkbox"].remember,
+input[type="checkbox"].weblock-remember {
     opacity: 1;
 }
 
-/* Additional styles to ensure the label is properly styled */
-.remember-label {
+/* Additional styles to ensure the label is properly styled - only for WebLock checkboxes */
+.weblock-form .remember-label,
+.login .remember-label,
+.form .remember-label,
+[data-weblock="true"] .remember-label,
+.weblock-remember-label {
     display: flex;
     align-items: center;
 }
 
-/* Ensure the label text is properly styled */
-.remember-label:after {
+/* Ensure the label text is properly styled - only for WebLock checkboxes */
+.weblock-form .remember-label:after,
+.login .remember-label:after,
+.form .remember-label:after,
+[data-weblock="true"] .remember-label:after,
+.weblock-remember-label:after {
     content: "";
     display: inline-block;
     clear: both;
